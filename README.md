@@ -1,6 +1,6 @@
 forked from https://github.com/pylejowdmn/springboot-gradle-s2i
 
-Spring Boot with Gradle build - RHEL Docker image
+Spring Boot with Gradle build - RHEL Docker image...Updated with s2i extended/chained build
 ========================================================
 
 This repository contains the s2i source for building a [Spring Boot 2](https://projects.spring.io/spring-boot/) application with [Gradle 4](https://gradle.org/) and then executing the resulting "fat" jar.  It sets a few environment variables that typical spring boot applications will make use of. 
@@ -9,6 +9,8 @@ The centos image is available on DockerHub
 ```
 docker pull woodmenlife/springboot-gradle-s2i:latest
 ```
+
+More info about chained builds can be found [here] https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md
 
 Important Environment Variables
 -------------------------------
