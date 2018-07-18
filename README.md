@@ -10,7 +10,7 @@ The centos image is available on DockerHub
 docker pull woodmenlife/springboot-gradle-s2i:latest
 ```
 
-More info about chained builds can be found [here] https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md
+More info about chained builds can be found [here](https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md)
 
 Important Environment Variables
 -------------------------------
