@@ -1,0 +1,29 @@
+#!/bin/bash -e
+#
+# S2I run script for the 'springboot-gradle-s2i image.
+# The run script executes the server that runs your application.
+#
+# For more information see the documentation:
+#   https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#   https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md
+#
+
+cd ${HOME} 
+
+#If APP_TARGET is unset or blank, default to the JAR name found (-printf grabs just jar name)
+if [ -z "$APP_TARGET" ]; then
+  APP_TARGET=`find ${HOME}/src/build/libs -name *.jar -printf "%f\n"`
+  echo "---> \$APP_TARGET not set, defaulting to [${APP_TARGET}]"
+else
+  echo "---> \$APP_TARGET set with value: [${APP_TARGET}]"
+fi
+
+#If JAVA_OPTS is unset or blank, default to "-Xms256m -Xmx512m -Dlogging.level.org.springframework.web=WARN"
+if [ -z "$JAVA_OPTS" ]; then
+  JAVA_OPTS="-Xms256m -Xmx512m -Dlogging.level.org.springframework.web=WARN"
+  echo "---> \$JAVA_OPTS not set, defaulting to [${JAVA_OPTS}]"
+else
+  echo "---> \$JAVA_OPTS set with value: [${JAVA_OPTS}]"
+fi
+
+$JAVA_HOME/bin/java $JAVA_OPTS -jar ${HOME}/src/build/libs/$APP_TARGET

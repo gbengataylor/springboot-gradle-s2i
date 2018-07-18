@@ -1,7 +1,9 @@
+forked from https://github.com/pylejowdmn/springboot-gradle-s2i
+
 Spring Boot with Gradle build - RHEL Docker image
 ========================================================
 
-This repository contains the s2i source for building a [Spring Boot](https://projects.spring.io/spring-boot/) application with [Gradle](https://gradle.org/) and then executing the resulting "fat" jar.  It sets a few environment variables that typical spring boot applications will make use of. 
+This repository contains the s2i source for building a [Spring Boot 2](https://projects.spring.io/spring-boot/) application with [Gradle 4](https://gradle.org/) and then executing the resulting "fat" jar.  It sets a few environment variables that typical spring boot applications will make use of. 
 
 The centos image is available on DockerHub
 ```
@@ -22,8 +24,10 @@ ENV MANAGEMENT_PORT 8081
 Pushing to Docker Hub
 -------------------------------
 ```
-$ docker build -t woodmenlife/springboot-gradle-s2i .
-$ docker push woodmenlife/springboot-gradle-s2i
+docker build . -t quay.io/gbengataylor/springboot-openjdk8-gradle-s2i
+
+#$ docker build -t woodmenlife/springboot-gradle-s2i .
+#$ docker push woodmenlife/springboot-gradle-s2i
 ```
 
 Updating OpenShift image to Docker Hub latest

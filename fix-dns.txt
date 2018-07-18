@@ -1,0 +1,13 @@
+#temp fix
+https://stackoverflow.com/questions/28668180/cant-install-pip-packages-inside-a-docker-container-with-ubuntu
+
+add 
+
+nameserver 8.8.8.8
+nameserver 8.8.4.4 
+
+to /etc/resolv.conf
+
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+echo "nameserver 8.8.8.4" >> /etc/resolv.conf
+

@@ -11,14 +11,14 @@ ENV SERVER_PORT=8080 \
 
 EXPOSE $SERVER_PORT $MANAGEMENT_PORT
 
-LABEL name="woodmenlife/springboot-gradle-s2i" \
+LABEL name="gbengataylor/springboot-openjdk8-gradle-s2i" \
       version="1.0" \
       release="10" \
       architecture="x86_64" \
       io.openshift.expose-services="8080:server,8081:managment" \
       io.openshift.s2i.scripts-url="image:///usr/local/s2i" \
       io.k8s.description="Platform for building and running Spring Boot applications" \
-      io.k8s.display-name="Spring Boot Gradle 3" \
+      io.k8s.display-name="Spring Boot Gradle 4" \
       io.openshift.tags="builder,java,java8,gradle,gradle3,springboot" \
       io.openshift.s2i.destination="/tmp"
 
@@ -27,12 +27,15 @@ LABEL name="woodmenlife/springboot-gradle-s2i" \
 # longer be neccessary.
 USER root
 
-RUN yum install -y wget
+#RUN yum install -y wget
+#COPY wget /bin 
 
 # Gradle Install
-ENV GRADLE_VERSION 3.4
-RUN wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -O gradle.zip \
-  && unzip gradle.zip -d /usr/share \
+ENV GRADLE_VERSION 4.9
+# update, download version before running docker build
+COPY ./gradle-$GRADLE_VERSION-bin.zip gradle.zip
+#RUN wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip -O gradle.zip 
+RUN  unzip gradle.zip -d /usr/share \
   && rm gradle.zip \
   && mv /usr/share/gradle-$GRADLE_VERSION /usr/share/gradle \
   && ln -s /usr/share/gradle/bin/gradle /usr/bin/gradle

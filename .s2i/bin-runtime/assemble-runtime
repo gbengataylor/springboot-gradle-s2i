@@ -1,0 +1,11 @@
+#!/bin/bash -e
+#
+# S2I assemble-runtime script for the 'springboot-gradle-s2i' image.
+# The 'assemble-runtime' script packages only the runnable artifacts so that it is ready to run.
+#
+# For more information refer to the documentation:
+#   https://github.com/openshift/source-to-image/blob/master/docs/runtime_image.md
+#
+
+echo "running..assemble-runtime"
+echo "leaving files where they are"
